@@ -413,6 +413,9 @@ if (typeof Handlebars !== 'undefined') {
         },
         'click .remove[type=submit]': function(event, template) {
             event.preventDefault();
+            if (!confirm("Remove?")) {
+                return false;
+            }
             var self = this;
             var collection2Obj = window[template.data.schema];
             var cb = collection2Obj._callbacks && collection2Obj._callbacks.remove ? collection2Obj._callbacks.remove : null;
